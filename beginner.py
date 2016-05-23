@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
+import tensorflow as tf
+
 # テスト用データを持ってくる @MNIST
 # 0～9 を手書きした数値をデジタル化した情報が 70,000個含まれる
 # そのうち55,000個を学習に用い、5,000個は検証、10,000個を精度評価に用いる
 from tensorflow.examples.tutorials.mnist import input_data
 mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
 
-import tensorflow as tf
-
-# 入力テンソル確保。Noneには学習用データ数(55,000)が入る
+# 入力テンソル確保。Noneには任意のデータ数が入る
 x = tf.placeholder(tf.float32, [None, 784]) # 28*28=784ピクセルの画像データ
                                             # 簡単のため画像を一次元にする
 y_ = tf.placeholder(tf.float32, [None, 10]) # 正解集(0～9の1つだけが1で他は0となる配列)
